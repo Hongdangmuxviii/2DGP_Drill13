@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import pico2d
-from sdl2 import SDL_Event, SDL_KEYDOWN, SDL_PushEvent, SDLK_i, SDLK_1, SDLK_2, SDLK_KP_1, SDLK_KP_2
+from sdl2 import SDL_Event, SDL_KEYDOWN, SDL_PushEvent, SDLK_i, SDLK_0, SDLK_1, SDLK_2, SDLK_KP_1, SDLK_KP_2
 import game_framework as gf
 import play_mode, item_mode, game_world
 from ball import Ball
@@ -33,6 +33,17 @@ try:
         assert game_world.world[1][-1].image is Ball.images[size]
         play_mode.update()
         play_mode.render()
+    # 메뉴 중 누운 자세로 정지하고 0으로 복귀하면 일어난다.
+    before_x = play_mode.boy.x
+    press(SDLK_i)
+    assert play_mode.boy.state == 'SLEEP'
+    for _ in range(10):
+        item_mode.update()
+        item_mode.render()
+    assert play_mode.boy.x == before_x
+    press(SDLK_0)
+    assert gf.stack == [play_mode] and play_mode.boy.state == 'IDLE'
+    assert play_mode.boy.ball_size == 0
     for menu in (False, True):
         for key, size in ((SDLK_1, 21), (SDLK_2, 41), (SDLK_KP_1, 21), (SDLK_KP_2, 41)):
             play_mode.boy.fall_asleep()

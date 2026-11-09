@@ -50,9 +50,10 @@ def pause():
     boy.dir = 0
     if boy.state == 'RUN':
         boy.stop_run()
-    elif boy.state == 'SLEEP':
-        boy.wake_up()
-    boy.idle_started_at = get_time()
+    if boy.state == 'IDLE':
+        boy.fall_asleep()
 
 def resume():
-    boy.idle_started_at += get_time() - paused_at
+    if boy.state == 'SLEEP':
+        boy.wake_up()
+    boy.idle_started_at = get_time()

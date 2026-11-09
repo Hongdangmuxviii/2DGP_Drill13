@@ -58,7 +58,7 @@ for asleep in (False, True):
         clock[0] = boy.idle_started_at + (5.1 if asleep else 4.99)
         boy.update()
         key(SDLK_i)
-        assert boy.state == 'IDLE', 'I must wake the character'
+        assert boy.state == 'SLEEP', 'Menu must pause the character lying down'
         clock[0] += 10
         before_selection = len(world.world[1])
         key(choice)
