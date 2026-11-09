@@ -22,8 +22,6 @@ LEC15 강의의 모드 기반 게임 프레임워크를 구현한다. 기존 LEC
 ## 구조
 main → game_framework → logo/title/play/item 모드. 캐릭터·공·잔디는 game_world에서 관리한다. 모든 모드는 init/finish/pause/resume/handle_events/update/render를 제공한다.
 
-## 제출 기준
-별도 Public 저장소, PRD.md, 실행 코드와 실제 PNG 포함, 한글 커밋 20개, .git 주소 제출. 이 저장소의 이력은 기존 작업물의 제출용 분리·정리 과정을 현재 시각으로 기록한다. 과거 수업 중 개발한 이력을 재현하거나 소급한 기록이 아니다.
 
 ## 검증
 화면 대체 모드 테스트와 실제 SDL 이벤트·이미지의 화면 없는 렌더링 테스트를 수행한다. 사용자의 실제 키보드/운영체제 입력은 별도 수동 확인 항목이다. 수업 내 수행 여부와 e-Class 마감·제출은 GitHub 업로드만으로 확인되지 않는다.
